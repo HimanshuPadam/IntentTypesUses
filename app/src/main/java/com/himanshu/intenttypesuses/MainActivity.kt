@@ -11,17 +11,15 @@ class MainActivity : AppCompatActivity() {
     var btnSms: Button?=null
     var btnWebsite: Button?=null
     var btnCall: Button?=null
-    var etPhoneNo: EditText?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
          btnSms= findViewById(R.id.btnSms)
          btnWebsite= findViewById(R.id.btnWebsite)
          btnCall= findViewById(R.id.btnCall)
-        etPhoneNo=findViewById(R.id.etPhoneNo)
     btnSms?.setOnClickListener {
         var intent= Intent( Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("Helloo:$etPhoneNo")
+        intent.data = Uri.fromParts("sms","9876869065",null)
         startActivity(intent)
     }
     btnWebsite?.setOnClickListener {
@@ -30,8 +28,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
         btnCall?.setOnClickListener {
-            var intent = Intent(Intent.ACTION_CALL)
-            intent.data = Uri.parse("$etPhoneNo")
+            var intent= Intent( Intent.ACTION_DIAL)
+            intent.data=Uri.parse("tel:9876869065")
             startActivity(intent)
         }
         }
