@@ -17,9 +17,11 @@ class MainActivity : AppCompatActivity() {
          btnSms= findViewById(R.id.btnSms)
          btnWebsite= findViewById(R.id.btnWebsite)
          btnCall= findViewById(R.id.btnCall)
+        var no=9876869065
     btnSms?.setOnClickListener {
         var intent= Intent( Intent.ACTION_SENDTO)
-        intent.data = Uri.fromParts("sms","9876869065",null)
+       // intent.data = Uri.fromParts("sms","9876869065",null)
+        intent.data= Uri.parse("sms:$no")
         startActivity(intent)
     }
     btnWebsite?.setOnClickListener {
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity() {
     }
         btnCall?.setOnClickListener {
             var intent= Intent( Intent.ACTION_DIAL)
-            intent.data=Uri.parse("tel:9876869065")
+            intent.data=Uri.parse("tel:$no")
+            //intent.data=Uri.parse("tel:9876869065")
             startActivity(intent)
         }
         }
